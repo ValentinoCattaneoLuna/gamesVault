@@ -27,8 +27,10 @@ fun GamesVaultSplash(
     navController: NavHostController
 ) {
     LaunchedEffect(Unit) {
-        delay(2000)
-        navController.navigate(Screens.GamesVaultHome.route)
+        delay(3000)
+        navController.navigate(Screens.GamesVaultHome.route){
+            popUpTo("Splash"){inclusive = true}
+        }
     }
     // Fondo completo
     Box(
