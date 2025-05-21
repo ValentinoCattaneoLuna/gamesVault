@@ -17,6 +17,10 @@ class GamesDataSource : IGamesDataSource {
         TODO("Not yet implemented")
     }
 
+    override suspend fun getGameById(juegoId: Int): JuegoDetail {
+        TODO("Not yet implemented")
+    }
+
 
     var json = """
     [

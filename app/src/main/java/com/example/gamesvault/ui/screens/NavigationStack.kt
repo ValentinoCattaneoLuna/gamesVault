@@ -25,6 +25,9 @@ fun NavigationStack(){
         composable(route = Screens.GamesVaultHome.route) {
             GamesVaultHome()
         }
+        composable(route = Screens.GamesVaultJuegoDetail.route) {
+            //GamesVaultJuegoDetail()
+        }
     }
 
 }

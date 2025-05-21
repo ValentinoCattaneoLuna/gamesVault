@@ -29,4 +29,8 @@ class GamesAPIDataSource : IGamesDataSource {
         }
     }
 
+    override suspend fun getGameById(juegoId: Int): JuegoDetail {
+        return RetrofitInstance.GamesAPI.getGame(juegoId)
+    }
+
 }

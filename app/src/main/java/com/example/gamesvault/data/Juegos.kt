@@ -1,6 +1,7 @@
 package com.example.gamesvault.data
 
 import com.google.gson.annotations.SerializedName
+import java.time.LocalDate
 import java.util.Date
 
 data class JuegoSummary(
@@ -28,7 +29,7 @@ data class JuegoDetail(
     val genre: String,
     val platform: String,
     @SerializedName("release_date")
-    val fechaCreacion : Date,
+    val fechaCreacion : LocalDate,
     @SerializedName("minimum_system_requirements")
     val requerimientosMinimos: ReqMin,
     val screenshots: List<Screenshot>
@@ -47,3 +48,8 @@ data class Screenshot(
     val id: Int,
     val image: String
 )
+
+
+fun emptyJuegoDetail(): JuegoDetail{
+    return JuegoDetail(0,"","","","","","",LocalDate.now(), ReqMin("","","","",""), emptyList() )
+}
