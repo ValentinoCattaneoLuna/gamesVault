@@ -5,5 +5,5 @@ import com.example.gamesvault.data.JuegoSummary
 interface IGamesRepository {
 
     suspend fun fetchGames(): List<JuegoSummary>
-
+    suspend fun searchGames(query: String): List<JuegoSummary>
 }
