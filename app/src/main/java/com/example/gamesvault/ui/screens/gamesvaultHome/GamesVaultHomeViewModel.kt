@@ -10,6 +10,7 @@ import com.example.gamesvault.data.GamesRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import okio.IOException
+import retrofit2.http.Query
 
 class GamesVaultHomeViewModel(
     private val gamesRepository: GamesRepository = GamesRepository()
@@ -32,6 +33,21 @@ class GamesVaultHomeViewModel(
                 Log.e("gamesVault", "Error recuperando la lista de juegos")
             }
         }
+    }
+    fun searchGames() {
+        fetchJob?.cancel()
+        fetchJob = viewModelScope.launch {
+            try {
+                val result = gamesRepository.searchGames(uiState.searchQuery)
+                uiState = uiState.copy(gamesList = result)
+            } catch (e: IOException) {
+                Log.e("gamesVault", "Error en búsqueda: ${e.message}")
+            }
+        }
+    }
+
+    fun searchChange(query: String) {
+        uiState = uiState.copy(searchQuery = query, gamesList = uiState.gamesList)
     }
 }
 
