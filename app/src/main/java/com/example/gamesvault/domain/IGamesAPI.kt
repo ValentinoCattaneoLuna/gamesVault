@@ -4,14 +4,15 @@ import com.example.gamesvault.data.JuegoDetail
 import com.example.gamesvault.data.JuegoSummary
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface IGamesAPI {
     @GET("games?sort-by=popularity")
     suspend fun getGamesTrending() : List<JuegoSummary>
 
-    @GET("game/{juegoId}")
+    @GET("game")
     suspend fun getGame(
-        @Path("juegoId") juegoId : Int
+        @Query("id") juegoId : Int
     ): JuegoDetail
 
 }
