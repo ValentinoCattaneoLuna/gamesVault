@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.gamesvault.ui.screens.GamesVaultJuegoDetail.GamesVaultJuegoDetail
 import com.example.gamesvault.ui.screens.gamesvaultHome.GamesVaultHome
 import com.example.gamesvault.ui.screens.splash.GamesVaultSplash
 
@@ -23,10 +24,12 @@ fun NavigationStack(){
             GamesVaultSplash(navController = navController)
         }
         composable(route = Screens.GamesVaultHome.route) {
-            GamesVaultHome()
+            GamesVaultHome(navController = navController)
         }
-        composable(route = Screens.GamesVaultJuegoDetail.route) {
-            //GamesVaultJuegoDetail()
+        composable(route = Screens.GamesVaultJuegoDetail.route + "/{juegoId}") { it ->
+            var id = it.arguments?.getString("juegoId")
+            val juegoId = id?.toIntOrNull()
+            GamesVaultJuegoDetail(juegoId ?: 0)
         }
     }
 

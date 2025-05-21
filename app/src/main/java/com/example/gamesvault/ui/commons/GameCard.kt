@@ -1,5 +1,6 @@
 package com.example.gamesvault.ui.commons
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,13 +30,16 @@ import com.example.gamesvault.data.JuegoSummary
 
 
 @Composable
-fun GameCard(juego: JuegoSummary) {
+fun GameCard(juego: JuegoSummary, onClick: (juegoId: Int) -> Unit) {
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth().clickable {
+                onClick(juego.id)
+            },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(6.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF0D1117))
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF0D1117)),
+        onClick = {}
     ) {
         Column(modifier = Modifier.padding(12.dp)) {
             AsyncImage(

@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.gamesvault.data.JuegoDetail
 import com.example.gamesvault.data.Screenshot
+import androidx.compose.foundation.lazy.items
+
 
 @Composable
 fun GameCardDetail(juego: JuegoDetail) {
@@ -119,7 +121,7 @@ fun GameCardDetail(juego: JuegoDetail) {
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = { /* abrir urlJuego */ },
+            onClick = { juego.urlJuego },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp),

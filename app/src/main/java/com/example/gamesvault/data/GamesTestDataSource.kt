@@ -2,9 +2,8 @@ package com.example.gamesvault.data
 
 import com.example.gamesvault.domain.IGamesDataSource
 import com.google.gson.Gson
-import kotlinx.coroutines.delay
 
-class GamesDataSource : IGamesDataSource {
+class GamesTestDataSource : IGamesDataSource {
 
     override
     suspend fun getGamesList(): List<JuegoSummary> {

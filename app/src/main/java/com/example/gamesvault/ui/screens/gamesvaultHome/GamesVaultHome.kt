@@ -1,5 +1,6 @@
 package com.example.gamesvault.ui.screens.gamesvaultHome
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,11 +18,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.gamesvault.ui.commons.GamesUIList
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import com.example.gamesvault.ui.screens.Screens
 
 @Composable
 fun GamesVaultHome(
     vm: GamesVaultHomeViewModel = viewModel(),
-    modifier: Modifier = Modifier){
+    modifier: Modifier = Modifier,
+    navController: NavHostController
+){
     
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)){
         Text(
@@ -56,8 +61,11 @@ fun GamesVaultHome(
             )
         } else {
             // Si hay juegos en la lista, se muestran
-            GamesUIList(vm.uiState.gamesList, Modifier.fillMaxSize())
-        }
+            GamesUIList(vm.uiState.gamesList, Modifier.fillMaxSize(),
+                onClick = {
+                        id -> Log.d("test",id.toString())
+                    navController.navigate(Screens.GamesVaultJuegoDetail.route + "/${id}")
+        })}
 
     }
 

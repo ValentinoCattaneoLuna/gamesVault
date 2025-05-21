@@ -13,7 +13,8 @@ import androidx.compose.foundation.lazy.items
 @Composable
 fun GamesUIList(
     gamesList: List<JuegoSummary>,
-    modifier : Modifier = Modifier
+    modifier : Modifier = Modifier,
+    onClick : (juegoId: Int) -> Unit
 ) {
     LazyColumn(
         modifier = modifier
@@ -22,7 +23,7 @@ fun GamesUIList(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(gamesList) { juego ->
-            GameCard(juego)
+            GameCard(juego, onClick = onClick)
         }
     }
 }
