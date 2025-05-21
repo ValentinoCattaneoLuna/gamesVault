@@ -39,7 +39,6 @@ fun GameCard(juego: JuegoSummary, onClick: (juegoId: Int) -> Unit) {
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(6.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFF0D1117)),
-        onClick = {}
     ) {
         Column(modifier = Modifier.padding(12.dp)) {
             AsyncImage(
