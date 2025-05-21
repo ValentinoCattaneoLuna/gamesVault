@@ -8,12 +8,14 @@ class GamesDataSource : IGamesDataSource {
 
     override
     suspend fun getGamesList(): List<JuegoSummary> {
-        delay(5000)
         val gson = Gson()
         val response: Array<JuegoSummary> = gson.fromJson(json, Array<JuegoSummary>::class.java)
         return response.toList()
     }
 
+    override suspend fun searchGames(query: String): List<JuegoSummary> {
+        TODO("Not yet implemented")
+    }
 
 
     var json = """
