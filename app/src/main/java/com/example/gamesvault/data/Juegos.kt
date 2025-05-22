@@ -29,7 +29,7 @@ data class JuegoDetail(
     val genre: String,
     val platform: String,
     @SerializedName("release_date")
-    val fechaCreacion : LocalDate,
+    val fechaCreacion : String,
     @SerializedName("minimum_system_requirements")
     val requerimientosMinimos: ReqMin,
     val screenshots: List<Screenshot>
@@ -51,5 +51,5 @@ data class Screenshot(
 
 
 fun emptyJuegoDetail(): JuegoDetail{
-    return JuegoDetail(0,"","","","","","",LocalDate.now(), ReqMin("","","","",""), emptyList() )
+    return JuegoDetail(0,"","","","","","",LocalDate.now().toString(), ReqMin("","","","",""), emptyList() )
 }
