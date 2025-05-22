@@ -19,7 +19,7 @@ fun GamesUIList(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(1.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(gamesList) { juego ->
