@@ -1,5 +1,6 @@
 package com.example.gamesvault.ui.commons
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,7 +39,8 @@ fun GameCard(juego: JuegoSummary, onClick: (juegoId: Int) -> Unit) {
             },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(6.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF0D1117)),
+        colors = CardDefaults.cardColors(containerColor = Color(0x00ffffff)),
+        border = BorderStroke(1.dp,Color(0xff121B2B))
     ) {
         Column(modifier = Modifier.padding(12.dp)) {
             AsyncImage(
