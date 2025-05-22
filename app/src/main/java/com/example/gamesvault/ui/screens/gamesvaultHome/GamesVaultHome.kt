@@ -1,6 +1,8 @@
 package com.example.gamesvault.ui.screens.gamesvaultHome
 
 import android.util.Log
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,10 +17,13 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.unit.dp
 import com.example.gamesvault.ui.commons.GamesUIList
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.gamesvault.ui.commons.SearchBarWithButton
 import com.example.gamesvault.ui.screens.Screens
 
 @Composable
@@ -27,47 +32,42 @@ fun GamesVaultHome(
     modifier: Modifier = Modifier,
     navController: NavHostController
 ){
-    
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)){
-        Text(
-            text = "Juegos en tendencia",
-            style = MaterialTheme.typography.titleLarge
-        )
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background( Color(0xFF020817))
+    ){
+        Column(modifier = Modifier.fillMaxSize().padding(16.dp)){
 
-        Row (
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ){
-            TextField(
-                value = vm.uiState.searchQuery,
-                modifier = Modifier.weight(1f),
-                label = {Text("Buscar juegos...")},
-                singleLine = true,
-                onValueChange = { vm.searchChange(it) }
+            SearchBarWithButton(
+                query = vm.uiState.searchQuery,
+                onQueryChange = { newQuery -> vm.searchChange(newQuery) },
+                onSearchClick = { vm.searchGames() }
             )
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(
-                onClick = { vm.searchGames()}
-            ) {
-                Text("Buscar")
-            }
-        }
-
-        if (vm.uiState.gamesList.isEmpty()) {
             Text(
-                text = "Juegos no encontrados...",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp)
+                modifier = Modifier.padding(1.dp, bottom = 16.dp),
+                text = "Juegos en tendencia",
+                style = MaterialTheme.typography.titleLarge,
+                color = White,
             )
-        } else {
-            // Si hay juegos en la lista, se muestran
-            GamesUIList(vm.uiState.gamesList, Modifier.fillMaxSize(),
-                onClick = {
-                        id -> Log.d("test",id.toString())
-                    navController.navigate(Screens.GamesVaultJuegoDetail.route + "/${id}")
-        })}
 
+            if (vm.uiState.gamesList.isEmpty()) {
+                Text(
+                    text = "Juegos no encontrados...",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp)
+                )
+            } else {
+                // Si hay juegos en la lista, se muestran
+                GamesUIList(vm.uiState.gamesList, Modifier.fillMaxSize(),
+                    onClick = {
+                            id -> Log.d("test",id.toString())
+                        navController.navigate(Screens.GamesVaultJuegoDetail.route + "/${id}")
+                    })}
+
+        }
     }
+
 
 }
 
