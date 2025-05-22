@@ -40,34 +40,37 @@ import androidx.compose.ui.platform.LocalContext
 @Composable
 fun GameCardDetail(juego: JuegoDetail) {
     val scrollState = rememberScrollState()
-    val context = LocalContext.current // Obtén el contexto correctamente
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF020817)) // Fondo oscuro similar al de la imagen
+            .background(Color(0xFF020817))
             .verticalScroll(scrollState)
     ) {
         // Título del juego
         Text(
             text = juego.title,
-            style = MaterialTheme.typography.headlineLarge.copy(
+            style = MaterialTheme.typography.headlineMedium.copy(
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             ),
-            modifier = Modifier.padding(bottom = 8.dp, top = 8.dp)
+            modifier = Modifier.padding(start = 16.dp, top = 16.dp)
         )
         // Imagen principal del juego
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(12.dp),
             contentAlignment = Alignment.Center){
             AsyncImage(
                 model = juego.urlImagen,
-                contentDescription = "Imagen del juego",
+                contentDescription = juego.title,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Fit
+                    .fillMaxWidth()
+                    .height(180.dp)
+                    .clip(RoundedCornerShape(8.dp))
             )
         }
 
@@ -117,7 +120,7 @@ fun GameCardDetail(juego: JuegoDetail) {
                 text = juego.descripcionCompleta,
                 style = MaterialTheme.typography.bodyMedium.copy(
                     color = Color.LightGray,
-                    lineHeight = 22.sp
+                    lineHeight = 18.sp
                 ),
                 modifier = Modifier.padding(bottom = 16.dp)
             )
@@ -140,9 +143,10 @@ fun GameCardDetail(juego: JuegoDetail) {
                         model = screenshot.image,
                         contentDescription = "Screenshot del juego",
                         modifier = Modifier
-                            .size(240.dp, 140.dp)
+                            .fillMaxWidth()
+                            .height(180.dp)
                             .clip(RoundedCornerShape(8.dp)),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Fit
                     )
                 }
             }
@@ -159,23 +163,29 @@ fun GameCardDetail(juego: JuegoDetail) {
             Column(modifier = Modifier.padding(bottom = 16.dp)) {
                 Text(
                     text = "SO: ${juego.requerimientosMinimos.os}",
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray)
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                            color = Color.LightGray,
+                            fontWeight = FontWeight.Bold)
                 )
                 Text(
                     text = "Procesador: ${juego.requerimientosMinimos.processor}",
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray)
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray,
+                        fontWeight = FontWeight.Bold)
                 )
                 Text(
                     text = "Memoria: ${juego.requerimientosMinimos.memory}",
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray)
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray,
+                        fontWeight = FontWeight.Bold)
                 )
                 Text(
                     text = "Gráficos: ${juego.requerimientosMinimos.graphics}",
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray)
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray,
+                        fontWeight = FontWeight.Bold)
                 )
                 Text(
                     text = "Almacenamiento: ${juego.requerimientosMinimos.storage}",
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray)
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.LightGray,
+                        fontWeight = FontWeight.Bold)
                 )
             }
 
@@ -201,9 +211,9 @@ fun GameCardDetail(juego: JuegoDetail) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
-                shape = RoundedCornerShape(4.dp),
+                shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF3A56F7), // Azul similar al de la imagen
+                    containerColor = Color(0xFF7C3AED),
                     contentColor = Color.White
                 )
             ) {
@@ -213,15 +223,5 @@ fun GameCardDetail(juego: JuegoDetail) {
                 )
             }
         }
-    }
-}
-@Composable
-fun InfoChip(text: String) {
-    Box(
-        modifier = Modifier
-            .background(Color(0xFF1F2128), RoundedCornerShape(8.dp))
-            .padding(horizontal = 10.dp, vertical = 4.dp)
-    ) {
-        Text(text = text, color = Color.White, fontSize = 12.sp)
     }
 }
