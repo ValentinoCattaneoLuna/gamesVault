@@ -16,8 +16,7 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.gamesvault.ui.screens.gamesvaultHome.GamesVaultHomeViewModel
+
 @Composable
 fun SearchBarWithButton(
     query: String,

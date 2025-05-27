@@ -1,4 +1,4 @@
-package com.example.gamesvault.ui.screens.gamesVaultJuegoDetail
+package com.example.gamesvault.ui.screens.juegoDetail
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

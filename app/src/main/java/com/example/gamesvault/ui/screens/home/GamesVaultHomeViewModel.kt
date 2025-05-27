@@ -1,4 +1,4 @@
-package com.example.gamesvault.ui.screens.gamesvaultHome
+package com.example.gamesvault.ui.screens.home
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -10,7 +10,6 @@ import com.example.gamesvault.data.GamesRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import okio.IOException
-import retrofit2.http.Query
 
 class GamesVaultHomeViewModel(
     private val gamesRepository: GamesRepository = GamesRepository()

@@ -1,4 +1,4 @@
-package com.example.gamesvault.ui.screens.gamesVaultJuegoDetail
+package com.example.gamesvault.ui.screens.juegoDetail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

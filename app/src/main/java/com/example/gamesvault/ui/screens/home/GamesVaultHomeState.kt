@@ -1,4 +1,4 @@
-package com.example.gamesvault.ui.screens.gamesvaultHome
+package com.example.gamesvault.ui.screens.home
 
 import com.example.gamesvault.data.JuegoSummary
 

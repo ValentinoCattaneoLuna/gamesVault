@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.gamesvault.ui.screens.gamesVaultJuegoDetail.GamesVaultJuegoDetail
-import com.example.gamesvault.ui.screens.gamesvaultHome.GamesVaultHome
+import com.example.gamesvault.ui.screens.juegoDetail.GamesVaultJuegoDetail
+import com.example.gamesvault.ui.screens.home.GamesVaultHome
 import com.example.gamesvault.ui.screens.splash.GamesVaultSplash
 
 @Composable
