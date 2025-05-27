@@ -1,13 +1,11 @@
-package com.example.gamesvault.ui.screens.GamesVaultJuegoDetail
+package com.example.gamesvault.ui.screens.gamesVaultJuegoDetail
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gamesvault.data.GamesAPIDataSource
 import com.example.gamesvault.data.GamesRepository
-import com.example.gamesvault.data.JuegoDetail
 import com.example.gamesvault.domain.IGamesRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
