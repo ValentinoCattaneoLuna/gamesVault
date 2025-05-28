@@ -1,4 +1,5 @@
 [versions]
+googleGmsGoogleServices = "4.4.2"
 agp = "8.9.0"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
@@ -65,4 +66,5 @@ androidx-material-icons-extended = { group = "androidx.compose.material", name =
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
