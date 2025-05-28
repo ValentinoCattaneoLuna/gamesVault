@@ -28,6 +28,11 @@ googleid = "1.1.1"
 playServicesAuth = "21.3.0"
 materialIconsExtended = "1.7.8"
 firebaseFirestore = "25.1.4"
+roomCommon = "2.7.1"
+roomKtx = "2.7.1"
+roomMigration = "2.7.1"
+roomRuntime = "2.7.1"
+roomCompiler = "2.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -63,6 +68,11 @@ googleid = { group = "com.google.android.libraries.identity.googleid", name = "g
 play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+androidx-room-migration = { group = "androidx.room", name = "room-migration", version.ref = "roomMigration" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
