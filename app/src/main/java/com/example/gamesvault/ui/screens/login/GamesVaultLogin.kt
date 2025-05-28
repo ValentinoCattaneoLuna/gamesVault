@@ -1,6 +1,5 @@
 package com.example.gamesvault.ui.screens.login
 
-import android.media.Image
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,10 +21,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Divider
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,28 +36,36 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.gamesvault.R
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox  // Ejemplo, busca el de Google
-import androidx.compose.material.icons.outlined.AccountBox
-import androidx.compose.material.icons.rounded.AccountBox
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.gamesvault.R.drawable.ic_google
-import com.example.gamesvault.R.drawable.games_vault_logo
+import com.example.gamesvault.ui.screens.Screens
 
 
 @Composable
 fun GamesVaultLogin(
     onGoogleLoginClick: ()-> Unit,
     modifier: Modifier = Modifier,
-    navController: NavHostController
+    navController: NavHostController,
+    vm: GamesVaultLoginViewModel = viewModel()
 
 ){
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
 
+
+    LaunchedEffect(Unit) {
+        vm.uiEvent.collect {
+            event ->
+            navController.navigate(Screens.GamesVaultHome.route){
+                popUpTo(Screens.GamesVaultLogin.route){inclusive = true}
+            }
+        }
+    }
 
     Box(
         modifier = Modifier
