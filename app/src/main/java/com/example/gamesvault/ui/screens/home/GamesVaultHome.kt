@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.example.gamesvault.ui.commons.GamesUIList
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.gamesvault.ui.commons.BarraDeNavegacion
 import com.example.gamesvault.ui.commons.SearchBarWithButton
 import com.example.gamesvault.ui.screens.Screens
 
@@ -25,14 +27,20 @@ fun GamesVaultHome(
     vm: GamesVaultHomeViewModel = viewModel(),
     modifier: Modifier = Modifier,
     navController: NavHostController
-){
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background( Color(0xFF020817))
-    ){
-        Column(modifier = Modifier.fillMaxSize().padding(16.dp)){
-
+) {
+    Scaffold(
+        bottomBar = {
+            BarraDeNavegacion(navController = navController)
+        },
+        containerColor = Color(0xFF020817) // Fondo general
+    ) { paddingValues ->
+        // Contenido principal
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues) // IMPORTANTE: para no tapar el contenido con la barra
+                .padding(16.dp)
+        ) {
             SearchBarWithButton(
                 query = vm.uiState.searchQuery,
                 onQueryChange = { newQuery -> vm.searchChange(newQuery) },
@@ -49,20 +57,23 @@ fun GamesVaultHome(
                 Text(
                     text = "Juegos no encontrados...",
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp)
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(top = 16.dp),
+                    color = Color.White
                 )
             } else {
-                // Si hay juegos en la lista, se muestran
-                GamesUIList(vm.uiState.gamesList, Modifier.fillMaxSize(),
-                    onClick = {
-                            id -> Log.d("test",id.toString())
+                GamesUIList(
+                    vm.uiState.gamesList,
+                    Modifier.fillMaxSize(),
+                    onClick = { id ->
+                        Log.d("test", id.toString())
                         navController.navigate(Screens.GamesVaultJuegoDetail.route + "/${id}")
-                    })}
-
+                    }
+                )
+            }
         }
     }
-
-
 }
 
 
