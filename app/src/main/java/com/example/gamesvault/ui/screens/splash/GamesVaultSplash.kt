@@ -28,7 +28,7 @@ fun GamesVaultSplash(
 ) {
     LaunchedEffect(Unit) {
         delay(3000)
-        navController.navigate(Screens.GamesVaultHome.route){
+        navController.navigate(Screens.GamesVaultLogin.route){
             popUpTo("Splash"){inclusive = true}
         }
     }
