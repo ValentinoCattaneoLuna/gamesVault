@@ -20,7 +20,7 @@ val navigationItems = listOf(
     NavigationItem(
         titulo = "Aleatorio",
         icono = Icons.Default.Shuffle,
-        route = ""
+        route = Screens.GamesVaultRandomGame.route
     ),
     NavigationItem(
         titulo = "Perfil",

@@ -8,9 +8,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.gamesvault.ui.screens.Screens.GamesVaultPerfil
+import com.example.gamesvault.ui.screens.Screens.GamesVaultRandomGame
 import com.example.gamesvault.ui.screens.juegoDetail.GamesVaultJuegoDetail
 import com.example.gamesvault.ui.screens.home.GamesVaultHome
 import com.example.gamesvault.ui.screens.login.GamesVaultLogin
+import com.example.gamesvault.ui.screens.randomGame.GamesVaultRandomGame
 import com.example.gamesvault.ui.screens.splash.GamesVaultSplash
 
 @Composable
@@ -48,6 +50,11 @@ fun NavigationStack(
         //perfil
         composable(route = Screens.GamesVaultPerfil.route){
             GamesVaultPerfil(navController = navController, onLogOutClick = onLogOutClick)
+        }
+
+        //random game
+        composable(route = Screens.GamesVaultRandomGame.route) {
+            GamesVaultRandomGame(navController = navController)
         }
     }
 
