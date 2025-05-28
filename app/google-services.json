@@ -12,7 +12,28 @@
           "package_name": "com.example.gamesvault"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "439373568774-33tjgp46dl1g39vv5qmnvm25j0l4qmc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gamesvault",
+            "certificate_hash": "de8a443dc9065af381118b4e9c451607e12cf2e6"
+          }
+        },
+        {
+          "client_id": "439373568774-uqp2kofprnuaj6uvpiibf0dfaqav4nfd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gamesvault",
+            "certificate_hash": "bdb423e061d19bc8d3cd47c4e1f47e65d17d28b7"
+          }
+        },
+        {
+          "client_id": "439373568774-e6vueqhf0vc2c3qnnc8mk2uc8qr9ernp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAkD7p-jVNMrMPpV8ft7BDCPYKjO3PY1-I"
@@ -20,7 +41,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439373568774-e6vueqhf0vc2c3qnnc8mk2uc8qr9ernp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
