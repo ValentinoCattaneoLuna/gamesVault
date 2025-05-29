@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+//import com.example.gamesvault.data.local.JuegosDatabase
 import com.example.gamesvault.ui.screens.NavigationStack
 import com.example.gamesvault.ui.screens.Screens
 import com.example.gamesvault.ui.theme.GamesVaultTheme
@@ -54,6 +55,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        //ver en casa
+        //JuegosDatabase.createInstance(this)
+
         googleSigninClient = GoogleSignIn.getClient(
             this,
             GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -73,6 +77,7 @@ class MainActivity : ComponentActivity() {
 
                             navController.navigate(Screens.GamesVaultSplash.route) {
                                 popUpTo("Perfil") { inclusive = true }
+                                popUpTo("Home") { inclusive = true }
                             }
                         },
                         onGoogleLoginClick = {
