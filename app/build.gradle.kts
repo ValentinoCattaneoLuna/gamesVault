@@ -29,16 +29,28 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
         viewBinding = true
+    }
+}
+
+// 👇 Solución global para forzar versión moderna de annotations
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "com.intellij" && requested.name == "annotations") {
+            useTarget("org.jetbrains:annotations:23.0.0")
+        }
     }
 }
 
@@ -74,7 +86,15 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.migration)
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.compiler)
+
+    // ❌ Excluir com.intellij:annotations:12.0 que viene de room-compiler
+    kapt(libs.androidx.room.compiler) {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+
+    // ✅ Incluir versión correcta
+    implementation("org.jetbrains:annotations:23.0.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -82,6 +102,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(platform("com.google.firebase:firebase-bom:33.14.0") )
-    kapt(libs.androidx.room.compiler)
+    implementation(platform("com.google.firebase:firebase-bom:33.14.0"))
 }
