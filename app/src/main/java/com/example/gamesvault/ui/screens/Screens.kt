@@ -7,5 +7,5 @@ sealed class Screens (val route: String) {
     object GamesVaultLogin: Screens("Login")
     object GamesVaultPerfil: Screens("Perfil")
     object GamesVaultRandomGame: Screens("random")
-
+    object GamesVaultFavorites: Screens("favorites")
 }

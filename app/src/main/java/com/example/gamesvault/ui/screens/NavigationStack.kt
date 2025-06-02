@@ -14,6 +14,7 @@ import com.example.gamesvault.ui.screens.home.GamesVaultHome
 import com.example.gamesvault.ui.screens.login.GamesVaultLogin
 import com.example.gamesvault.ui.screens.randomGame.GamesVaultRandomGame
 import com.example.gamesvault.ui.screens.splash.GamesVaultSplash
+import com.example.gamesvault.ui.screens.favorites.GamesVaultFavorites
 
 @Composable
 fun NavigationStack(
@@ -55,6 +56,11 @@ fun NavigationStack(
         //random game
         composable(route = Screens.GamesVaultRandomGame.route) {
             GamesVaultRandomGame(navController = navController)
+        }
+
+        //favorites
+        composable(route = Screens.GamesVaultFavorites.route){
+            GamesVaultFavorites(navController = navController)
         }
     }
 
