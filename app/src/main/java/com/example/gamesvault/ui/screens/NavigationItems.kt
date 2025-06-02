@@ -15,7 +15,7 @@ val navigationItems = listOf(
     NavigationItem(
         titulo = "Favoritos",
         icono = Icons.Default.FavoriteBorder,
-        route = ""
+        route = Screens.GamesVaultFavorites.route
     ),
     NavigationItem(
         titulo = "Aleatorio",
