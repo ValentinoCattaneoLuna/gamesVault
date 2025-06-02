@@ -29,10 +29,10 @@ Aplicación Android para descubrir, explorar y guardar tus videojuegos favoritos
 
 ## 📸 Capturas de Pantalla
 <div align="center">
-  <img src="screenshots/home.jpg" width="200" alt="Home">
-  <img src="screenshots/details.jpg" width="200" alt="Detalles">
-  <img src="screenshots/search.jpg" width="200" alt="Búsqueda">
-  <img src="screenshots/profile.jpg" width="200" alt="Perfil">
+  <img src="screenshots/home.png" width="200" alt="Inicio">
+  <img src="screenshots/randomgame.png" width="200" alt="Juego Aleatorio">
+  <img src="screenshots/gamedetail.png" width="200" alt="Detalle de juego">
+  <img src="screenshots/profile.png" width="200" alt="Perfil">
 </div>
 
 ## ⚙️ Configuración
