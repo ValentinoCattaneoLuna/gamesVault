@@ -4,29 +4,26 @@ import com.example.gamesvault.data.JuegoSummary
 import com.google.gson.annotations.SerializedName
 import kotlin.Int
 
+fun JuegoSummary.toJuegoSummaryLocal(): JuegoSummaryLocal {
+    return JuegoSummaryLocal(
+        id = this.id,
+        title = this.title,
+        urlImagen = this.urlImagen,
+        urlJuego = this.urlJuego,
+        descripcionCorta = this.descripcionCorta,
+        genre = this.genre,
+        platform = this.platform
+    )
+}
 
-//fun JuegoSummary.toLocal() = JuegoSummaryLocal(
-//
-//    id,
-//    title,
-//    urlImagen,
-//    urlJuego,
-//    descripcionCorta,
-//    genre,
-//    platform
-//)
-//
-//fun List<JuegoSummary>.toLocal() = map(JuegoSummary::toLocal)
-//
-//fun JuegoSummaryLocal.toExternal() = JuegoSummary(
-//    id,
-//    title,
-//    urlImagen,
-//    urlJuego,
-//    descripcionCorta,
-//    genre,
-//    platform
-//)
-//
-//fun List<JuegoSummaryLocal>.toExternal() = map(JuegoSummaryLocal::toExternal)
-
+fun JuegoSummaryLocal.toJuegoSummary(): JuegoSummary {
+    return JuegoSummary(
+        id = this.id,
+        title = this.title,
+        urlImagen = this.urlImagen,
+        urlJuego = this.urlJuego,
+        descripcionCorta = this.descripcionCorta,
+        genre = this.genre,
+        platform = this.platform
+    )
+}
