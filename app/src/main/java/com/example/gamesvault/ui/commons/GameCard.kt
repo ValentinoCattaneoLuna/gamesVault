@@ -28,14 +28,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.gamesvault.data.JuegoSummary
+import com.example.gamesvault.data.UsersRepository
+import com.example.gamesvault.data.Usuario
 
 
 @Composable
-fun GameCard(juego: JuegoSummary, onClick: (juegoId: Int) -> Unit) {
+fun GameCard(juego: JuegoSummary, onClick: (juegoId: Int) -> Unit, onFavClick: (juegoId: Int) -> Unit){
     Card(
         modifier = Modifier
             .fillMaxWidth().clickable {
                 onClick(juego.id)
+
             },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(6.dp),
@@ -66,11 +69,7 @@ fun GameCard(juego: JuegoSummary, onClick: (juegoId: Int) -> Unit) {
                     color = Color.White,
                     modifier = Modifier.weight(1f)
                 )
-                Icon(
-                    imageVector = Icons.Default.FavoriteBorder,
-                    contentDescription = "Favorito",
-                    tint = Color.White
-                )
+                FavoriteButton(modifier = Modifier, onToggle = {onFavClick(juego.id)})
             }
 
             Spacer(modifier = Modifier.height(4.dp))

@@ -69,6 +69,10 @@ fun GamesVaultHome(
                     onClick = { id ->
                         Log.d("test", id.toString())
                         navController.navigate(Screens.GamesVaultJuegoDetail.route + "/${id}")
+                    },
+                    onFavClick = {
+                        id ->
+                        vm.favoritos(id)
                     }
                 )
             }
