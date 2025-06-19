@@ -11,7 +11,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-//import com.example.gamesvault.data.local.JuegosDatabase
+import com.example.gamesvault.data.Usuario
+import com.example.gamesvault.data.local.JuegosDataBaseProvider
+
 import com.example.gamesvault.ui.screens.NavigationStack
 import com.example.gamesvault.ui.screens.Screens
 import com.example.gamesvault.ui.theme.GamesVaultTheme
@@ -21,6 +23,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestoreSettings
 
 class MainActivity : ComponentActivity() {
 
@@ -37,6 +41,13 @@ class MainActivity : ComponentActivity() {
             FirebaseAuth.getInstance().signInWithCredential(credential)
                 .addOnCompleteListener { authResult ->
                     if (authResult.isSuccessful) {
+                        val email = authResult.result.user!!.email.toString()
+                        Log.d("mail", email)
+                        val db = FirebaseFirestore.getInstance()
+
+                        db.collection("Usuarios").document(email).set(Usuario(email))
+
+
                         navController.navigate(Screens.GamesVaultHome.route){
                             popUpTo(Screens.GamesVaultLogin.route) { inclusive = true }
                         }
@@ -55,8 +66,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        //ver en casa
-        //JuegosDatabase.createInstance(this)
+        JuegosDataBaseProvider.createDatabase(this)
 
         googleSigninClient = GoogleSignIn.getClient(
             this,
