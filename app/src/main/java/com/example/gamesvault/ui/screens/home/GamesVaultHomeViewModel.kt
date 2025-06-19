@@ -6,13 +6,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gamesvault.data.GamesRepository
+import com.example.gamesvault.data.UsersDataSource
+import com.example.gamesvault.dataAdd.GamesRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import okio.IOException
 
 class GamesVaultHomeViewModel(
-    private val gamesRepository: GamesRepository = GamesRepository()
+    private val gamesRepository: GamesRepository = GamesRepository(),
+    private val usersRepository: UsersDataSource = UsersDataSource()
 ): ViewModel() {
 
     var uiState by mutableStateOf(GamesVaultHomeState())
@@ -52,6 +54,14 @@ class GamesVaultHomeViewModel(
 
     fun searchChange(query: String) {
         uiState = uiState.copy(searchQuery = query)
+    }
+
+
+    fun favoritos(id: Int){
+        fetchJob?.cancel()
+        fetchJob = viewModelScope.launch {
+        usersRepository.agregarFavorito(id)
+        }
     }
 }
 

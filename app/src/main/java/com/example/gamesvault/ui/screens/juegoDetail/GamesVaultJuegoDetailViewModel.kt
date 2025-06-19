@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gamesvault.data.GamesRepository
+import com.example.gamesvault.dataAdd.GamesRepository
 import com.example.gamesvault.domain.IGamesRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
