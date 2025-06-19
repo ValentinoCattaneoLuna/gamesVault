@@ -9,13 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
-// JuegosDatabase.kt
 @Database(
-    entities = [JuegoSummaryLocal::class, JuegoDetailLocal::class],
+    entities = [JuegoDetailLocal::class],
     version = 1,
     exportSchema = false
 )
-@TypeConverters(Converters::class)
 abstract class JuegosDatabase : RoomDatabase() {
     abstract fun juegosDao(): IJuegosDao
 
