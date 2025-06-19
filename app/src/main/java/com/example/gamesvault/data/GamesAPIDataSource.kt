@@ -2,6 +2,9 @@ package com.example.gamesvault.data
 
 import android.util.Log
 import android.util.Log.e
+import com.example.gamesvault.data.local.JuegosDataBaseProvider
+import com.example.gamesvault.data.local.toJuegoDetail
+import com.example.gamesvault.data.local.toJuegoDetailLocal
 import com.example.gamesvault.domain.IGamesDataSource
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -35,17 +38,15 @@ class GamesAPIDataSource : IGamesDataSource {
 
     override suspend fun getGameById(juegoId: Int): JuegoDetail {
 
-        val db = FirebaseFirestore.getInstance()
-        var juegoResult = db.collection("Juegos").document(juegoId.toString()).get().await()
-        var juego = juegoResult.toObject(JuegoDetail::class.java)
-        if (juego != null){
-            return juego
+        val db = JuegosDataBaseProvider.dbLocal
+        var juegoLocal = db.juegosDao().getDetail(juegoId)
+        if (juegoLocal != null){
+            return juegoLocal.toJuegoDetail()
 
         }else{
-            juego = RetrofitInstance.GamesAPI.getGame(juegoId)
-            db.collection("Juegos").document(juegoId.toString()).set(juego)
+            var juego = RetrofitInstance.GamesAPI.getGame(juegoId)
+            db.juegosDao().insertDetail(juego.toJuegoDetailLocal())
             return juego
-
         }
 
     }
