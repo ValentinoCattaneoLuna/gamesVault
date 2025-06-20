@@ -23,6 +23,7 @@ class GamesVaultHomeViewModel(
 
     init {
         fetchGames()
+        cargarFavoritos()
     }
 
     private var fetchJob: Job? = null
@@ -63,6 +64,37 @@ class GamesVaultHomeViewModel(
         usersRepository.addFavorite(id)
         }
     }
+
+
+    fun cargarFavoritos() {
+        viewModelScope.launch {
+            val favoritos = usersRepository.getFavorites()
+            uiState = uiState.copy(favoritosIds = favoritos)
+        }
+    }
+
+    fun toggleFavorito(id: Int) {
+        viewModelScope.launch {
+            val currentFavs = uiState.favoritosIds.toMutableList()
+            val isFav = currentFavs.contains(id)
+
+            if (isFav) {
+                usersRepository.removeFavorite(id)
+                currentFavs.remove(id)
+            } else {
+                usersRepository.addFavorite(id)
+                currentFavs.add(id)
+            }
+
+            uiState = uiState.copy(favoritosIds = currentFavs)
+        }
+    }
+
+
+
+
+
+
 }
 
 
