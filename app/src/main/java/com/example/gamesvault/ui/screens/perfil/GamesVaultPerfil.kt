@@ -25,6 +25,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.gamesvault.ui.commons.BarraDeNavegacion
+import com.example.gamesvault.ui.screens.Screens
 import com.example.gamesvault.ui.screens.perfil.GamesVaultPerfilState
 import com.example.gamesvault.ui.screens.perfil.GamesVaultPerfilViewModel
 import java.text.SimpleDateFormat
@@ -54,7 +55,6 @@ fun GamesVaultPerfil(
 
     val fechaUltimoLogin = remember { formatoFecha.format(Date(vm.uiState.ultimo_login)) }
     val horaUltimoLogin = remember { formatoHora.format(Date(vm.uiState.ultimo_login)) }
-
 
     Scaffold(
         bottomBar = {
@@ -191,13 +191,13 @@ fun GamesVaultPerfil(
 
                     // Cantidad de juegos favoritos
                     Text(
-                        text = "Tienes 12 Juegos favoritos",
+                        text = "Tienes ${vm.uiState.favoritos} Juegos favoritos",
                         style = MaterialTheme.typography.bodyLarge.copy(color = Color.White)
                     )
 
                     // Botón "Ver favoritos"
                     Button(
-                        onClick = { /* Acción para ver favoritos */ },
+                        onClick = { navController.navigate(Screens.GamesVaultFavorites.route) },
                         modifier = Modifier.fillMaxWidth(),
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF121B2B)),
                         shape = MaterialTheme.shapes.medium.copy(CornerSize(8.dp))
