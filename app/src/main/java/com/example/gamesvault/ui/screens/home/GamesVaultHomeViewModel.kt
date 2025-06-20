@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gamesvault.data.UsersDataSource
+import com.example.gamesvault.data.UsersRepository
 import com.example.gamesvault.dataAdd.GamesRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -14,7 +15,7 @@ import okio.IOException
 
 class GamesVaultHomeViewModel(
     private val gamesRepository: GamesRepository = GamesRepository(),
-    private val usersRepository: UsersDataSource = UsersDataSource()
+    private val usersRepository: UsersRepository = UsersRepository()
 ): ViewModel() {
 
     var uiState by mutableStateOf(GamesVaultHomeState())
@@ -43,7 +44,6 @@ class GamesVaultHomeViewModel(
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch {
             try {
-                // Busca juegos (primero en caché, si no hay usa API)
                 val result = gamesRepository.searchGames(uiState.searchQuery)
                 uiState = uiState.copy(gamesList = result)
             } catch (e: IOException) {
@@ -60,7 +60,7 @@ class GamesVaultHomeViewModel(
     fun favoritos(id: Int){
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch {
-        usersRepository.agregarFavorito(id)
+        usersRepository.addFavorite(id)
         }
     }
 }
