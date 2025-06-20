@@ -64,15 +64,14 @@ fun GamesVaultHome(
                 )
             } else {
                 GamesUIList(
-                    vm.uiState.gamesList,
-                    Modifier.fillMaxSize(),
+                    gamesList = vm.uiState.gamesList,
+                    favoritosIds = vm.uiState.favoritosIds,
+                    modifier = Modifier.fillMaxSize(),
                     onClick = { id ->
-                        Log.d("test", id.toString())
                         navController.navigate(Screens.GamesVaultJuegoDetail.route + "/${id}")
                     },
-                    onFavClick = {
-                        id ->
-                        vm.favoritos(id)
+                    onFavClick = { id ->
+                        vm.toggleFavorito(id)
                     }
                 )
             }
