@@ -31,7 +31,10 @@ class UsersDataSource(){
 
     }
 
-
+    suspend fun getFavorites(): List<Int> {
+        val usuario = getUser()
+        return usuario.favoritos
+    }
     suspend fun agregarFavorito(id: Int){
        var usuario =  getUser()
         usuario.favoritos.add(id)
