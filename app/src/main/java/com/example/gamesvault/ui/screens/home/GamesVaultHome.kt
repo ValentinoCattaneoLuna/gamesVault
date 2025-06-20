@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -38,7 +39,7 @@ fun GamesVaultHome(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues) // IMPORTANTE: para no tapar el contenido con la barra
+                .padding(paddingValues)
                 .padding(16.dp)
         ) {
             SearchBarWithButton(
@@ -52,7 +53,6 @@ fun GamesVaultHome(
                 style = MaterialTheme.typography.titleLarge,
                 color = White,
             )
-
             if (vm.uiState.gamesList.isEmpty()) {
                 Text(
                     text = "Juegos no encontrados...",
