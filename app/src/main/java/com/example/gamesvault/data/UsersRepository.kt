@@ -10,6 +10,10 @@ class UsersRepository(
     suspend fun fetchUser() :Usuario{
         return usersDataSource.getUser()
     }
+    override
+    suspend fun getFavorites(): List<Int> {
+        return usersDataSource.getFavorites()
+    }
 
     override
     suspend fun addFavorite(id:Int){
