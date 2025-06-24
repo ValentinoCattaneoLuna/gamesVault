@@ -87,7 +87,7 @@ class MainActivity : ComponentActivity() {
                         onLogOutClick = {
 
                             FirebaseAuth.getInstance().signOut()
-
+                            googleSigninClient.signOut()
                             navController.navigate(Screens.GamesVaultSplash.route) {
                                 popUpTo("Perfil") { inclusive = true }
                                 popUpTo("Home") { inclusive = true }
