@@ -45,10 +45,14 @@ class MainActivity : ComponentActivity() {
                         Log.d("mail", email)
                         val db = FirebaseFirestore.getInstance()
 
-                        db.collection("Usuarios").document(email).set(Usuario(email))
+                        val docRef = db.collection("Usuarios").document(email)
+                        docRef.get().addOnSuccessListener { document ->
+                            if (!document.exists()) {
+                                docRef.set(Usuario(email))
+                            }
+                        }
 
-
-                        navController.navigate(Screens.GamesVaultHome.route){
+                        navController.navigate(Screens.GamesVaultHome.route) {
                             popUpTo(Screens.GamesVaultLogin.route) { inclusive = true }
                         }
                     }
@@ -57,7 +61,6 @@ class MainActivity : ComponentActivity() {
             Log.e("AUTH", "Error en Google Sign-In", e)
         }
     }
-
 
 
 
